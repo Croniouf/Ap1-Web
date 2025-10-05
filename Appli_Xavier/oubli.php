@@ -110,9 +110,9 @@ if(isset($_POST['email']))
                 // à faire après la séléction bdd
 
                 $requete2="UPDATE `utilisateur` SET `motdepasse` = '$mdphash' WHERE `utilisateur`.`email` = '$lemail';";
-                if(!mysqli_query($bdd, $requette2))
+                if(!mysqli_query($bdd, $requete2))
                 {
-                    echo"<br>Erreur : " mysqli_error($connexion)."</br>";
+                    echo"<br>Erreur : " .mysqli_error($bdd)."</br>"; //changer $bdd en $connexion si ça ne marche pas 
                 }
                 
                 
