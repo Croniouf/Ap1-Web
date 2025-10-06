@@ -1,0 +1,40 @@
+.formulaire {
+    width: 300px;
+    margin: 100px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+}
+
+.formulaire h2 {
+    text-align: center;
+}
+
+.formulaire label {
+    display: block;
+    margin-top: 10px;
+}
+
+.formulaire input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+.formulaire .buttons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.formulaire button {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.formulaire a {
+    text-decoration: none;
+    color: inherit;
+}

@@ -6,7 +6,7 @@ include '_conf.php';
 <?php
 if ($bdd = mysqli_connect($serveurBDD, $userBDD, $mdpBDD,$nomBDD))
 {
-    echo "Connexion reussi !";
+    //echo "Connexion reussi !";
 }
 else
 {
@@ -20,16 +20,23 @@ else
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulaire de Connexion</title>
     <link rel="stylesheet" href="index.css">
+
+
 </head>
 <body>
-    <div class= "formulaire">
-        <h2>Formulaire<h2>
-        <labbel>Login</labbel>
-        <input type = "text" name = "login" required>
-        <br>
-        <labbel>Mot de passe</labbel>
-        <input type = "text" name = "mot de passe" required>
+<div class="formulaire">
+        <h2>Formulaire</h2>
+        <form action="accueil.php" method="post">
+            <label for="login">Login</label>
+            <input type="text" id="login" name="login" required>
+
+            <label for="mdp">Mot de passe</label>
+            <input type="password" id="mdp" name="mot_de_passe" required>
+
+            <div class="buttons">
+                <button type="submit">Confirmer</button>
+                <button type="button" onclick="window.location.href='oubli.php'">Mot de passe oublié ?</button>
+            </div>
+        </form>
     </div>
-    <button type="Comfirmer" class="form-button">Comfirmer</button>
-    <button><a href = "oubli.php"> Mot de passe Oublié ? </a><button>
 </body>
