@@ -11,7 +11,9 @@ $mail = new PHPMailer(true);
 
 <!DOCTYPE html>
 <html>
-Retrouver votre mot de passe <hr>
+<head>
+    <link rel="stylesheet" href="oubli.css">
+</head>
 <body>
 
 <?php
@@ -110,6 +112,7 @@ L’équipe de récupération';
 } else {
     ?>
     <form method="post">
+        <h3>RETROUVER VOTRE MOT DE PASSE</h3>
         <label>Email</label>
         <input type="text" name="email" required>
         <input type="submit" value="Comfirmer">

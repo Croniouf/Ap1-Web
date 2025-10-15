@@ -18,7 +18,7 @@ $mail = new PHPMailer(true);
 if (isset($_POST['login']))
 {
     $lemail = $_POST['login'];
-    echo $lemail;
+    //echo $lemail;
 
     $mdp = $_POST['mot_de_passe'];
     //echo $mdp;
@@ -52,7 +52,7 @@ if($trouve == "0") {
 } else {
 
 
-    echo " Votre email a bien été trouvé !";
+    //echo " Votre email a bien été trouvé !";
 
     //$newmdp = genererChaineAleatoire(10);
 
@@ -66,13 +66,13 @@ if($trouve == "0") {
 
 if (isset($_SESSION['Sid']))
 {
-    echo("Vous êtes connecté en tant que  '  $lemail'");
+    //echo("Vous êtes connecté en tant que  '  $lemail'");
     if($type == '1')
     {
-        echo("PARTIE ELEVE");
+        //echo("PARTIE ELEVE");
     }
     else{
-        echo("PARTIE PROF");
+        //echo("PARTIE PROF");
     }
 }
 else
@@ -92,22 +92,41 @@ if (isset($_POST['Deconnexion'])) {
 
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <br>
     <title>Page d'Accueil</title>
-    <h1></h1>
-    <br>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_accueil.css">
 </head>
 
 <body>
-    <form method="post">
-           <div class="buttons">
-                <button type="button" onclick="window.location.href='index.php'">Deconnexion</button>
-                <button type="button" onclick="window.location.href='perso.php'">Informations d'utilisateur</button>
+    <div class="container">
+        <h2>Bienvenue sur votre espace</h2>
+
+        <div class="info">
+            <?php
+            if (isset($_SESSION['Sid'])) {
+                echo "Vous êtes connecté en tant que <strong>" . htmlspecialchars($_SESSION['Sid']) . "</strong><br>";
+                if (isset($type)) {
+                    echo ($type == '1') ? "🧑‍🎓 <strong>Élève</strong>" : "👨‍🏫 <strong>Professeur</strong>";
+                }
+            } else {
+                echo "<div class='alert'>La connexion est perdue. <a href='index.php'>Retour à la page d'accueil</a>.</div>";
+            }
+            ?>
+        </div>
+
+        <form method="post">
+            <div class="buttons">
+                <button type="button" onclick="window.location.href='perso.php'">Mon Profil</button>
+                <button type="button" onclick="window.location.href='index.php'">Déconnexion</button>
+                <button type="button" onclick="window.location.href='listes_compte_rendus.php'">Liste des Compte Rendus</button>
+                <button type="button" onclick="window.location.href='creation_compte_rendus.php'">Créer un Compte Rendus</button>
+                <button type="button" onclick="window.location.href='commentaires.php'">Commentaires</button>
             </div>
-    </form>
+        </form>
+    </div>
 </body>
 </html>
+

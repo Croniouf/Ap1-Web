@@ -25,7 +25,7 @@ else
 </head>
 <body>
 <div class="formulaire">
-        <h2>Formulaire</h2>
+        <h2>SUIVI DES STAGES</h2>
         <form action="accueil.php" method="post">
             <label for="login">Login</label>
             <input type="text" id="login" name="login" required>

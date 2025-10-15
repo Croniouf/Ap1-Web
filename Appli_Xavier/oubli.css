@@ -1,5 +1,3 @@
-/* Design modernisé du formulaire */
-
 body {
     background: linear-gradient(135deg, #5b78c7, #ACB6E5);
     font-family: 'Arial', sans-serif;
@@ -7,7 +5,20 @@ body {
     padding: 0;
 }
 
-.formulaire {
+h1 {
+    text-align: center;
+    color: #333;
+    margin-top: 50px;
+    font-size: 28px;
+}
+
+hr {
+    border: 1px solid #ddd;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+form {
     width: 350px;
     margin: 100px auto;
     padding: 30px;
@@ -18,17 +29,11 @@ body {
     transition: transform 0.3s ease;
 }
 
-.formulaire:hover {
+form:hover {
     transform: translateY(-5px);
 }
 
-.formulaire h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-.formulaire label {
+form label {
     display: block;
     margin-top: 15px;
     color: #555;
@@ -36,7 +41,7 @@ body {
     font-size: 14px;
 }
 
-.formulaire input {
+form input[type="text"] {
     width: 100%;
     padding: 10px 12px;
     margin-top: 8px;
@@ -46,22 +51,14 @@ body {
     transition: border-color 0.3s;
 }
 
-.formulaire input:focus {
+form input[type="text"]:focus {
     border-color: #8674eb;
     outline: none;
     box-shadow: 0 0 6px rgba(116, 235, 213, 0.4);
 }
 
-.formulaire .buttons {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.formulaire button {
-    flex: 1;
+form input[type="submit"] {
+    width: 100%;
     padding: 10px;
     border: none;
     border-radius: 6px;
@@ -70,19 +67,31 @@ body {
     font-weight: bold;
     cursor: pointer;
     transition: background 0.3s;
+    margin-top: 20px;
 }
 
-.formulaire button:hover {
+form input[type="submit"]:hover {
     background-color: #283455;
 }
 
-.formulaire button[type="button"] {
-    background-color: transparent;
-    color: #555;
-    text-decoration: underline;
-    font-weight: normal;
+form .message {
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+    margin-top: 20px;
 }
 
-.formulaire button[type="button"]:hover {
-    color: #000;
+form .error {
+    color: red;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 10px;
 }
+
+form .success {
+    color: green;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 10px;
+}
+
