@@ -1,0 +1,93 @@
+/* Design modernisé du formulaire */
+body {
+    background: linear-gradient(135deg, #5b78c7, #ACB6E5);
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Conteneur du formulaire */
+.formulaire {
+    width: 350px;
+    margin: 100px auto;
+    padding: 30px;
+    background-color: #fff;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.formulaire:hover {
+    transform: translateY(-5px);
+}
+
+.formulaire h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.formulaire label {
+    display: block;
+    margin-top: 15px;
+    color: #555;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.formulaire input,
+.formulaire textarea {
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+.formulaire input:focus,
+.formulaire textarea:focus {
+    border-color: #5b78c7;
+    outline: none;
+    box-shadow: 0 0 6px rgba(91, 120, 199, 0.4);
+}
+
+/* Zone des boutons */
+.formulaire .buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.formulaire button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    background-color: #5b78c7;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.formulaire button:hover {
+    background-color: #283455;
+}
+
+.formulaire button[type="button"] {
+    background-color: transparent;
+    color: #555;
+    text-decoration: underline;
+    font-weight: normal;
+}
+
+.formulaire button[type="button"]:hover {
+    color: #000;
+}

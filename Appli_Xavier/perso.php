@@ -22,8 +22,8 @@ $donnees = mysqli_fetch_assoc($resultat);
 
 $email_actuel = $donnees['email'];
 $num_utilisateur = $donnees['num'];
+$type = $donnees['type'];  // Récupère le type de l'utilisateur (1 pour élève, 2 pour professeur)
 $message = "";
-
 
 // ======= TRAITEMENT MISE À JOUR EMAIL =======
 if (isset($_POST['modifier_email'])) {
@@ -41,8 +41,8 @@ if (isset($_POST['modifier_email'])) {
 
 // ======= TRAITEMENT CHANGEMENT MOT DE PASSE =======
 if (isset($_POST['modifier_mdp'])) {
-    $ancien_mdp = md5($_POST['ancien_mdp']);
-    $nouveau_mdp = md5($_POST['nouveau_mdp']);
+    $ancien_mdp = hash('sha256', $_POST['ancien_mdp']);
+    $nouveau_mdp = hash('sha256', $_POST['nouveau_mdp']);
 
     // Vérifie que l'ancien mot de passe est correct
     $requete = "SELECT motdepasse FROM utilisateur WHERE num = $num_utilisateur";
@@ -98,10 +98,18 @@ if (isset($_POST['modifier_mdp'])) {
     </form>
 
     <br>
-    <div class="buttons">
-        <button type="button" onclick="window.location.href='accueil.php'">Retour à l'accueil</button>
-        <button type="button" onclick="window.location.href='index.php'">Déconnexion</button>
-    </div>
+<div class="buttons">
+    <?php
+    // Redirection selon le type de l'utilisateur
+    if ($type == 2) {  // Professeur
+        echo '<button type="button" onclick="window.location.href=\'professeur.php\'">Retour à l\'accueil (Professeur)</button>';
+    } elseif ($type == 1) {  // Élève
+        echo '<button type="button" onclick="window.location.href=\'eleve.php\'">Retour à l\'accueil (Élève)</button>';
+    } else {
+        echo '<button type="button" onclick="window.location.href=\'index.php\'">Retour à l\'accueil</button>';
+    }
+    ?>
+    <button type="button" onclick="window.location.href='index.php'">Déconnexion</button>
 </div>
 
 </body>

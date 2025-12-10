@@ -46,13 +46,14 @@ if(isset($_POST['email'])) {
 
     $requete = "Select * from utilisateur WHERE email= '$lemail'";
     $resultat = mysqli_query($bdd, $requete);
-    $mdp = "0";
+    $mdp = null;
+
     while($donnees = mysqli_fetch_assoc($resultat)) {
         $mdp = $donnees['motdepasse'];
     }
 
-    if($mdp == "0") {
-        //echo " Erreur d'envoie d'email";
+    if($mdp === null) {
+        //echo " Erreur d'envoi d'email";
     } else {
         //echo" Votre email a bien été envoyé !";
 
@@ -60,12 +61,10 @@ if(isset($_POST['email'])) {
         $newmdp = genererChaineAleatoire(10);
         //echo"<hr>$newmdp</hr>";
 
-        $mdphash = md5($newmdp);
+        // Hachage du mot de passe avec SHA256
+        $mdphash = hash('sha256', $newmdp);
 
-        //on l'envoi à l'utilisateur
-
-        // on met à jour la bdd
-        // à faire après la séléction bdd
+        // Mise à jour du mot de passe dans la base de données
         $requete2 = "UPDATE `utilisateur` SET `motdepasse` = '$mdphash' WHERE `utilisateur`.`email` = '$lemail';";
         if(!mysqli_query($bdd, $requete2)) {
             echo "<br>Erreur : " . mysqli_error($bdd) . "</br>";  
@@ -76,13 +75,13 @@ if(isset($_POST['email'])) {
             $mail->isSMTP();
             $mail->Host       = 'smtp.hostinger.com';
             $mail->SMTPAuth   = true;
-            $mail->Username   = 'contact@sioslam.fr';  // ⚠️ remplace par ton email Hostinger
-            $mail->Password   = '&5&Y@*QHb';            // ⚠️ remplace par le mot de passe de cette boîte mail
+            $mail->Username   = 'contact@siolapie.com';  // ⚠️ remplace par ton email Hostinger
+            $mail->Password   = 'EmailL@pie25';            // ⚠️ remplace par le mot de passe de cette boîte mail
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; 
             $mail->Port       = 587;
 
             // Expéditeur
-            $mail->setFrom('contact@sioslam.fr', 'CONTACT SIOSLAM');
+            $mail->setFrom('contact@siolapie.com', 'CONTACT SIOSLAM');
             // Destinataire
             $mail->addAddress($lemail, 'Moi');
 
@@ -115,7 +114,7 @@ L’équipe de récupération';
         <h3>RETROUVER VOTRE MOT DE PASSE</h3>
         <label>Email</label>
         <input type="text" name="email" required>
-        <input type="submit" value="Comfirmer">
+        <input type="submit" value="Confirmer">
     </form>
     <?php
 }
