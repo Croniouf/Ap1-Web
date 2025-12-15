@@ -2,14 +2,9 @@
 // ——— Affichage des erreurs ———
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+include '_conf.php';
 
-// ——— Connexion à la base de données ———
-$serveur = "localhost";
-$utilisateur = "root";
-$motdepasse = "root";
-$basededonnees = "appli_web_xavier";
-
-$conn = new mysqli($serveur, $utilisateur, $motdepasse, $basededonnees);
+$conn = new mysqli($serveurBDD, $userBDD , $mdpBDD, $nomBDD);
 if ($conn->connect_error) {
     die("Erreur de connexion : " . $conn->connect_error);
 }
